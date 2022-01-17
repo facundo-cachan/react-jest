@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import logo from "./logo.svg";
+
 import "./App.css";
 import Home from "./routes/home";
 import About from "./routes/about";
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img
-          src={logo}
+          src="/logo.svg"
           className="App-logo"
           alt="logo"
           height={50}
