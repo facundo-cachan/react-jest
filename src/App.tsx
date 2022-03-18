@@ -1,14 +1,14 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
-import "./App.css";
 import Home from "./routes/home";
 import About from "./routes/about";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" data-testid="header">
         <img
           src="/logo.svg"
           className="App-logo"

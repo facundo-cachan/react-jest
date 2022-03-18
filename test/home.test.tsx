@@ -8,4 +8,6 @@ test("loads and displays message", async () => {
   render(<Home />);
   const welcome = screen.getByText("Welcome to the homepage!");
   expect(welcome).toBeVisible();
+  const believe = screen.getByText("You can do this, I believe in you.");
+  expect(believe).toBeVisible();
 });

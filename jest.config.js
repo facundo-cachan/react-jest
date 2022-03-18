@@ -15,8 +15,10 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js",
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "^@utils/(.*)$": "<rootDir>/utils/$1",
   },
-  collectCoverageFrom: ["./pages/**/*.{ts,tsx}"],
+  collectCoverageFrom: ["./**/*.{ts,tsx}"],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -24,9 +26,11 @@ module.exports = {
       lines: 80,
       statements: -10,
     },
+    /*
     "./pages/": {
       branches: 40,
       statements: 40,
     },
+    */
   },
 };

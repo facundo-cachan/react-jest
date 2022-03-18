@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 import About from "../src/routes/about";
 
 test("loads and displays message", async () => {
-  render(<About />);
-  const welcome = screen.getByText("Who are we?");
-  expect(welcome).toBeVisible();
+	render(<About />);
+	const welcome = screen.getByText("Who are we?");
+	expect(welcome).toBeVisible();
 });
