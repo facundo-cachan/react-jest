@@ -2,6 +2,7 @@
   "name": "react-jest-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://react-jest.vercel.app/",
   "eslintConfig": {
     "extends": "react-app"
   },
