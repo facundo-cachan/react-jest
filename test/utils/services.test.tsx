@@ -16,8 +16,8 @@ describe("Testing services", () => {
       .mockResolvedValueOnce(Promise.resolve({ data: users }));
     expect(users).toHaveLength(2);
   });
-  test("Using method hook", async () => {
-    axios.get.mockImplementationOnce(() => Promise.reject(new Error()));
+  test("Using method hook & resolve", async () => {
+    axios.get.mockImplementationOnce(() => Promise.resolve({ data: result }));
     const { result } = renderHook(() => getUsers());
     const current = await result.current;
     expect(current).toHaveLength(10);

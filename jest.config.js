@@ -3,12 +3,14 @@ module.exports = {
   roots: ["<rootDir>"],
   moduleFileExtensions: ["ts", "tsx", "js", "json", "jsx"],
   modulePathIgnorePatterns: [
-    "<rootDir>/src[/\\\\](index|setupTests|serviceWorker|react-app-env.d)[.ts*/\\\\]",
+    "<rootDir>/src[/\\\\](index|setupTests|serviceWorker|react-app-env.d)[.ts]",
   ],
   testPathIgnorePatterns: [
     "<rootDir>[/\\\\](node_modules|.next|coverage|mocks)[/\\\\]",
   ],
-  transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
+  transformIgnorePatterns: [
+    "[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"
+  ],
   transform: {
     "^.+\\.(ts|tsx)$": "babel-jest",
   },
@@ -23,6 +25,7 @@ module.exports = {
     "^@mocks/(.*)$": "<rootDir>/mocks/$1",
     "^@utils/(.*)$": "<rootDir>/src/utils/$1",
     "^@routes/(.*)$": "<rootDir>/src/routes/$1",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
   },
   setupFilesAfterEnv: ["<rootDir>/testSetupFile.js"],
   collectCoverageFrom: ["<rootDir>/src/**/*.{ts,tsx}"],
@@ -33,8 +36,14 @@ module.exports = {
       lines: 80,
       statements: -10,
     },
-    "./utils/": {
-      branches: 0,
+    "./src/routes": {
+      branches: 50,
+      lines: 80,
+    },
+
+    "./src/components": {
+      branches: 75,
+      lines: 80,
     },
   },
 };

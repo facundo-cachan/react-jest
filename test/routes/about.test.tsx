@@ -1,27 +1,35 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-// import fetch, { Response } from "node-fetch";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import About from "@routes/about";
 
-// jest.mock("node-fetch");
+beforeEach(() => render(<About />));
+afterEach(() => cleanup());
 
-test("loads and displays message", async () => {
-  render(<About />);
+test("Loads and displays message", async () => {
   const welcome = screen.getByText("Who are we?");
-  expect(welcome).toBeVisible();
+  expect(welcome).toBeVisible();  
 });
-/* 
-test("Fetch users and display names", async () => {
-  fetch.mockReturnValue(Promise.resolve(new Response("4")));
-
-  const idUsuario = await crearUsuario();
-
-  expect(fetch).toHaveBeenCalledTimes(1);
-  expect(fetch).toHaveBeenCalledWith("http://sitio.com/usuarios", {
-    method: "POST",
+test("Not users to show", () => {
+  const notUsers = screen.getByText("Not users to show");
+  expect(notUsers).toBeVisible();
+});
+test("Display users list", async () => {
+  waitFor(() => {
+    const usersList = screen.getAllByTestId("users-list");
+    expect(usersList).toBeVisible();
   });
-  expect(idUsuario).toBe("4");
 });
- */
+
+test("Fetch users and display names", async () => {
+  waitFor(() => {
+    const usernames = screen.getAllByTestId(1);
+    const li = usernames.map((li) => li.textContent);
+    const names = li.map((c) => c);
+
+    expect(names).toEqual(usernames);
+    expect(li).toEqual(names);
+    expect(usernames.keys()).toEqual(li)
+  });
+});

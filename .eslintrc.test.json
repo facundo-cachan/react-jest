@@ -5,9 +5,11 @@
     "jest": true
   },
   "extends": [
+    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended"
   ],
   "settings": {
     "react": { "version": "detect" }
@@ -20,22 +22,21 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier",
+    "sonarjs"
+  ],
   "rules": {
-    "no-unused-vars": [1],
-    "no-loop-func": [1],
     "no-use-before-define": "error",
     "no-useless-computed-key": ["error", { "enforceForClassMembers": true }],
-    "no-multiple-empty-lines": "error",
-    "no-multi-spaces": "error",
-    "space-in-parens": "error",
-    "prettier/prettier": "error",
+    "no-restricted-globals": ["error", "event", "fdescribe"],
+    "no-unused-vars": [1],
+    "no-loop-func": [1],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "max-len": [1, 1200, 2, { "ignoreComments": true }],
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-var-requires": 0,
@@ -44,7 +45,12 @@
       {
         "argsIgnorePattern": "^_"
       }
+    ],
+    "no-console": [
+      2,
+      {
+        "allow": ["warn", "error"]
+      }
     ]
-    /* "no-console": [2,{"allow": ["warn", "error"]}] */
   }
 }
