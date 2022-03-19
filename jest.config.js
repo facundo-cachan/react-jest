@@ -1,8 +1,12 @@
 module.exports = {
+  verbose: true,
   roots: ["<rootDir>"],
   moduleFileExtensions: ["ts", "tsx", "js", "json", "jsx"],
+  modulePathIgnorePatterns: [
+    "<rootDir>/src[/\\\\](index|setupTests|serviceWorker|react-app-env.d)[.ts*/\\\\]",
+  ],
   testPathIgnorePatterns: [
-    "<rootDir>[/\\\\](node_modules|.next|coverage)[/\\\\]",
+    "<rootDir>[/\\\\](node_modules|.next|coverage|mocks)[/\\\\]",
   ],
   transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
   transform: {
@@ -16,9 +20,12 @@ module.exports = {
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js",
     "^@/(.*)$": "<rootDir>/src/$1",
-    "^@utils/(.*)$": "<rootDir>/utils/$1",
+    "^@mocks/(.*)$": "<rootDir>/mocks/$1",
+    "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^@routes/(.*)$": "<rootDir>/src/routes/$1",
   },
-  collectCoverageFrom: ["./**/*.{ts,tsx}"],
+  setupFilesAfterEnv: ["<rootDir>/testSetupFile.js"],
+  collectCoverageFrom: ["<rootDir>/src/**/*.{ts,tsx}"],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -26,11 +33,8 @@ module.exports = {
       lines: 80,
       statements: -10,
     },
-    /*
-    "./pages/": {
-      branches: 40,
-      statements: 40,
+    "./utils/": {
+      branches: 0,
     },
-    */
   },
 };

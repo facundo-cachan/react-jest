@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "@/App";
-import renderWithRouter from "@utils/renderWithRouter";
+import renderWithRouter from "@mocks/renderWithRouter";
 
 test("Exist link & router loaded?", () => {
   render(<App />, { wrapper: MemoryRouter });

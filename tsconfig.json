@@ -22,20 +22,16 @@
     "paths": {
       "@": [
         "src/*"
-      ],
-      "@routes/*": [
-        "src/routes/*"
-      ],
-      "@utils/*": [
-        "utils/*"
       ]
     }
   },
   "include": [
     "src/**/*.ts*",
     "spec/**/*.ts*"
-  ],
+, "mocks/handlers.ts"  ],
   "exclude": [
-    "public/"
+    "public/",
+    "test/",
+    "mocks/"
   ]
 }
